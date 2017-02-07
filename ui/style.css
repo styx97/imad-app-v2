@@ -28,3 +28,12 @@ body {
     
     
 }
+.container {
+    max-width: 800px;
+    margin: 0 auto;
+    color: #3c3b3b;
+    font-family: monospace;
+    padding-top: 50px;
+    padding-left: 20px;
+    padding-right: 20px;
+}
