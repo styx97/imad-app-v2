@@ -13,11 +13,11 @@ app.get('/movies',function(req,res) {
 });
 
 app.get('/music',function(req,res) {
-    res.send("Music requested and will be served here");
+    res.sendFile(path.join(__dirname, 'ui', 'music.html'));   
 });
 
 app.get('/kolkata',function(req,res) {
-    res.send("Kolkata requested and will be served here");
+    res.sendFile(path.join(__dirname, 'ui', 'kolkata.html'));
 });
 
 app.get('/ui/style.css', function (req, res) {
