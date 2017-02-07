@@ -23,9 +23,8 @@ body {
     overflow: hidden;
 }
 
-.text-medium {
+.text-med {
     font-size: 45px;
-    
-
+    font-family: monospace;
     
 }
