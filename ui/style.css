@@ -26,7 +26,9 @@ body {
 .text-med {
     font-size: 35px;
     
-    
+}
+.text-normal {
+    font-size :20px;
 }
 .container {
     max-width: 800px;
