@@ -5,26 +5,43 @@ var path = require('path');
 var app = express();
 app.use(morgan('combined'));
 
-var movies = {
-    title: 'Movies | Rupak Sarkar',
-    heading: 'Feb 7, 2017',
-    content: `<p>
-                   These are the contents for my movie page.These are the contents for my movie page.These are the contents for my movie page.
-                   These are the contents for my movie page.These are the contents for my movie page.These are the contents for my movie page.
-                   These are the contents for my movie page.These are the contents for my movie page.These are the contents for my movie page.
-               </p>
-               <p>
-                   These are the contents for my movie page.These are the contents for my movie page.These are the contents for my movie page.
-                   These are the contents for my movie page.These are the contents for my movie page.These are the contents for my movie page.
-                   These are the contents for my movie page.These are the contents for my movie page.These are the contents for my movie page.
-               </p>
-               <p>
-                   These are the contents for my movie page.These are the contents for my movie page.These are the contents for my movie page.
-                   These are the contents for my movie page.These are the contents for my movie page.These are the contents for my movie page.
-                   These are the contents for my movie page.These are the contents for my movie page.These are the contents for my movie page.
-               </p>`
-    
-};
+
+var articles = { 
+    'movies' : {
+        title: 'Movies | Rupak Sarkar',
+        heading : 'Movies',
+        date : 'Feb 7, 2017',
+        content: `<p>
+                       These are the contents for my movie page.These are the contents for my movie page.These are the contents for my movie page.
+                       These are the contents for my movie page.These are the contents for my movie page.These are the contents for my movie page.
+                       These are the contents for my movie page.These are the contents for my movie page.These are the contents for my movie page.
+                   </p>
+                   <p>
+                       These are the contents for my movie page.These are the contents for my movie page.These are the contents for my movie page.
+                       These are the contents for my movie page.These are the contents for my movie page.These are the contents for my movie page.
+                       These are the contents for my movie page.These are the contents for my movie page.These are the contents for my movie page.
+                   </p>
+                   <p>
+                       These are the contents for my movie page.These are the contents for my movie page.These are the contents for my movie page.
+                       These are the contents for my movie page.These are the contents for my movie page.These are the contents for my movie page.
+                       These are the contents for my movie page.These are the contents for my movie page.These are the contents for my movie page.
+                   </p>`
+    },
+    'music' : {
+        title: 'Music | Rupak Sarkar',
+        heading : 'Music',
+        date : 'Feb 7, 2017',
+        content: `<p>
+                      These are the contents of my Music page.
+                   </p>`},
+    'kolkata' : {
+        title: 'Kolkata | Rupak Sarkar',
+        heading : 'Kolkata',
+        date : 'Feb 7, 2017',
+        content: `<p>
+                These are the contents of my page for Kolkata.     
+                </p>`}
+};    
 
 function createTemplate(data)  { 
     var title = data.title;
@@ -56,6 +73,7 @@ function createTemplate(data)  {
                    
                </div>
                <div>
+                   <p>
                    ${content}
                    </p>
                </div>
@@ -70,17 +88,13 @@ function createTemplate(data)  {
 app.get('/', function (req, res) {
   res.sendFile(path.join(__dirname, 'ui', 'index.html'));
 });
-app.get('/movies',function(req,res) {
-    res.send(createTemplate(movies));
+app.get('/:articleName',function(req,res) {
+    // articleName = movies
+    // articles[articleName] == {} content object for movies
+    var articleName = req.params.articleName;
+    res.send(createTemplate(articles[articleName]));
 });
 
-app.get('/music',function(req,res) {
-    res.sendFile(path.join(__dirname, 'ui', 'music.html'));   
-});
-
-app.get('/kolkata',function(req,res) {
-    res.sendFile(path.join(__dirname, 'ui', 'kolkata.html'));
-});
 
 app.get('/ui/style.css', function (req, res) {
   res.sendFile(path.join(__dirname, 'ui', 'style.css'));
