@@ -99,6 +99,16 @@ app.get('/', function (req, res) {
 });
 
 
+app.get('/submit-name/', function(req,res) { // /submit-name?name = xxxx
+    // Gett the name from the request 
+    var name = req.query.name;
+    
+    names.push(name);
+    //JSON : Javascript Object Notation
+    res.send(JSON.stringify(names));
+    
+});
+
 app.get('/:articleName',function(req,res) {
     // articleName = movies
     // articles[articleName] == {} content object for movies
@@ -125,12 +135,3 @@ app.listen(8080, function () {
   console.log(`IMAD course app listening on port ${port}!`);
 });
 
-app.get('/submit-name/', function(req,res) { // /submit-name?name = xxxx
-    // Gett the name from the request 
-    var name = req.query.name;
-    
-    names.push(name);
-    //JSON : Javascript Object Notation
-    res.send(JSON.stringify(names));
-    
-});
