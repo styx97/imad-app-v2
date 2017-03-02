@@ -98,7 +98,7 @@ app.get('/', function (req, res) {
   res.sendFile(path.join(__dirname, 'ui', 'index.html'));
 });
 
-
+names = [];
 app.get('/submit-name/', function(req,res) { // /submit-name?name = xxxx
     // Gett the name from the request 
     var name = req.query.name;
